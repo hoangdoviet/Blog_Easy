@@ -15,7 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'BlogController@index');
 Route::get('/posts/{post}', 'BlogController@post');
+Route::post('/posts/{post}/comment', 'BlogController@comment')->middleware('auth');
+
 Auth::routes();
+
 Route::get('/home', 'HomeController@index');
 Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LogoutController@getLogout']);
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
