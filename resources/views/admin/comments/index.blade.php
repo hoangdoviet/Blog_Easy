@@ -26,7 +26,7 @@
                             <tbody>
                                 @forelse ($comments as $comment)
                                     <tr>
-                                        <td>{{ $comment->post->title }}</td>
+                                        <td>{{ ($comment->post)?$comment->post->title:""  }}</td>
                                         <td>{{ $comment->body }}</td>
                                         <td>
                                             <a href="{{ url("/admin/comments/{$comment->id}") }}" data-method="DELETE" data-token="{{ csrf_token() }}" data-confirm="Are you sure?" class="btn btn-xs btn-danger">Delete</a>
@@ -40,7 +40,7 @@
                             </tbody>
                         </table>
 
-                        {!! $comments->links() !!}
+                        {!! $comments->links('vendor.pagination.custom') !!}
 
                     </div>
                 </div>

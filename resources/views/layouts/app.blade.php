@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/select2.css')}}" rel="stylesheet">
 
 
 </head>

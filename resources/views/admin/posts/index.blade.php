@@ -45,7 +45,7 @@
                                                         $label = 'Publish';
                                                     }
                                                 @endphp
-                                                <a href="{{ url("/admin/posts/{$post->id}/publish") }}" data-token="{{ csrf_token() }}" data-confirm="Are you sure?" class="btn btn-xs btn-warning">{{ $label }}</a>
+                                                <a href="{{ url("/admin/posts/{$post->id}/publish") }}" data-method="PUT" data-token="{{ csrf_token() }}" data-confirm="Are you sure?" class="btn btn-xs btn-warning">{{ $label }}</a>
                                             @endif
                                             <a href="{{ url("/admin/posts/{$post->id}") }}" class="btn btn-xs btn-success">Show</a>
                                             <a href="{{ url("/admin/posts/{$post->id}/edit") }}" class="btn btn-xs btn-info">Edit</a>
@@ -60,7 +60,7 @@
                             </tbody>
                         </table>
 
-                        {!! $posts->links() !!}
+                        {!! $posts->links('vendor.pagination.custom') !!}
 
                     </div>
                 </div>

@@ -39,7 +39,7 @@
                             </tbody>
                         </table>
 
-                        {!! $tags->links() !!}
+                        {!! $tags->links('vendor.pagination.custom') !!}
 
                     </div>
                 </div>

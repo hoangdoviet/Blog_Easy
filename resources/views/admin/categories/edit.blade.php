@@ -15,9 +15,12 @@
                     </div>
 
                     <div class="panel-body">
-                        {!! Form::model($category, ['method' => 'PUT', 'url' => "/admin/categories/{$category->id}", 'class' => 'form-horizontal', 'role' => 'form']) !!}
+                         <form class="form-horizontal" role="form" method="POST" action="{{ url("/admin/categories/{$category->id}") }}">
+                            {{ method_field('PUT') }}
+                            {{ csrf_field() }}
+                          {!! Form::model($category, ['method' => 'PUT', 'url' => "/admin/categories/{$category->id}", 'class' => 'form-horizontal', 'role' => 'form']) !!}
 
-                            @include('admin.categories.form')
+                            @include('admin.categories.form');
 
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-2">
@@ -27,7 +30,8 @@
                                 </div>
                             </div>
 
-                        {!! Form::close() !!}
+                        </form>
+                          {!! Form::close() !!}
                     </div>
                 </div>
             </div>
