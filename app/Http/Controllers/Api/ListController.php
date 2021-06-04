@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Modals\User;
 use App\Models\Category;
 use App\Models\Tag;
-use App\User;
 
-class ListingController extends Controller
+class ListController extends Controller
 {
     public function tags()
     {

@@ -6,7 +6,7 @@
 
             <div class="col-md-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Posts</div>
+                    <div class="panel-heading">{{ __('view.Posts') }}</div>
 
                     <div class="panel-body">
                         <h1>{{ $posts }}</h1>
@@ -16,7 +16,7 @@
 
             <div class="col-md-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Comments</div>
+                    <div class="panel-heading">{{ __('view.Comments') }}</div>
 
                     <div class="panel-body">
                         <h1>{{ $comments }}</h1>
@@ -26,7 +26,7 @@
 
             <div class="col-md-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Tags</div>
+                    <div class="panel-heading">{{ __('view.Tags') }}</div>
 
                     <div class="panel-body">
                         <h1>{{ $tags }}</h1>
@@ -36,7 +36,7 @@
 
             <div class="col-md-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Categories</div>
+                    <div class="panel-heading">{{ __('view.Categories') }}</div>
 
                     <div class="panel-body">
                         <h1>{{ $categories }}</h1>

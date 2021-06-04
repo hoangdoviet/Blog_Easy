@@ -40,13 +40,13 @@
                     <!-- Left Side Of Navbar -->
                     @if (! Auth::guest())
                         <ul class="nav navbar-nav">
-                            <li><a href="{{ url('admin/posts') }}">Posts</a></li>
-                            <li><a href="{{ url('admin/categories') }}">Categories</a></li>
-                            <li><a href="{{ url('admin/comments') }}">Comments</a></li>
-                            <li><a href="{{ url('admin/tags') }}">Tags</a></li>
+                            <li><a href="{{ url('admin/posts') }}">{{ __('view.Posts') }}</a></li>
+                            <li><a href="{{ url('admin/categories') }}">{{ __('view.Categories') }}</a></li>
+                            <li><a href="{{ url('admin/comments') }}">{{ __('view.Comments') }}</a></li>
+                            <li><a href="{{ url('admin/tags') }}">{{ __('view.Tags') }}</a></li>
 
                             @if (Auth::user()->is_admin)
-                                <li><a href="{{ url('admin/users') }}">Users</a></li>
+                                <li><a href="{{ url('admin/users') }}">{{ __('view.Users') }}</a></li>
                             @endif
                         </ul>
                     @endif
@@ -55,20 +55,27 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('login') }}">{{ __('auth.Login') }}</a></li>
+                            <li><a href="{{ route('register') }}">{{ __('auth.Register') }}</a></li>
                         @else
-                            <li class="dropdown">
+                            <li>
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }}
                                 </a>
-
                             </li>
+
                             <li>
-                                <a href="{{ route('logout') }}">Logout</a>
+                                <a href="{{ route('logout') }}">{{ __('auth.Logout') }}</a>
                             </li>
 
                         @endif
+                             <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Language</a>
+                                <ul class="dropdown-menu" role="menu">
+                                     <li><a href="{!! route('blog.change-language', ['en']) !!}">{{ __('view.English') }}</a></li>
+                                     <li><a href="{!! route('blog.change-language', ['vi']) !!}">{{ __('view.VietNam') }}</a></li>
+                                </ul>
+                            </li>
                     </ul>
                 </div>
             </div>

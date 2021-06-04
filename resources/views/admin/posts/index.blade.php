@@ -8,9 +8,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>
-                            Posts
+                        {{ __('view.Posts') }}
 
-                            <a href="{{ url('admin/posts/create') }}" class="btn btn-default pull-right">Create New</a>
+                            <a href="{{ url('admin/posts/create') }}" class="btn btn-default pull-right">{{ __('view.Create') }}</a>
                         </h2>
                     </div>
 
@@ -18,13 +18,13 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Title</th>
-                                    <th>Body</th>
-                                    <th>Author</th>
-                                    <th>Category</th>
-                                    <th>Tags</th>
-                                    <th>Published</th>
-                                    <th>Action</th>
+                                    <th>{{ __('view.Title') }}</th>
+                                    <th>{{ __('view.Body') }}</th>
+                                    <th>{{ __('view.Author') }}</th>
+                                    <th>{{ __('view.Categories') }}</th>
+                                    <th>{{ __('view.Tags') }}</th>
+                                    <th>{{ __('view.Published') }}</th>
+                                    <th>{{ __('view.Action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,21 +40,21 @@
                                             @if (Auth::user()->is_admin)
                                                 @php
                                                     if($post->published == 'Yes') {
-                                                        $label = 'Draft';
+                                                        $label = Lang::get('view.Draft');
                                                     } else {
-                                                        $label = 'Publish';
+                                                        $label = Lang::get('view.Published');
                                                     }
                                                 @endphp
-                                                <a href="{{ url("/admin/posts/{$post->id}/publish") }}" data-method="PUT" data-token="{{ csrf_token() }}" data-confirm="Are you sure?" class="btn btn-xs btn-warning">{{ $label }}</a>
+                                                <a href="{{ url("/admin/posts/{$post->id}/publish") }}" data-method="PUT" data-token="{{ csrf_token() }}" data-confirm="{{ __('view.confirm') }}" class="btn btn-xs btn-warning">{{ $label }}</a>
                                             @endif
-                                            <a href="{{ url("/admin/posts/{$post->id}") }}" class="btn btn-xs btn-success">Show</a>
-                                            <a href="{{ url("/admin/posts/{$post->id}/edit") }}" class="btn btn-xs btn-info">Edit</a>
-                                            <a href="{{ url("/admin/posts/{$post->id}") }}" data-method="DELETE" data-token="{{ csrf_token() }}" data-confirm="Are you sure?" class="btn btn-xs btn-danger">Delete</a>
+                                            <a href="{{ url("/admin/posts/{$post->id}") }}" class="btn btn-xs btn-success">{{ __('view.Show') }}</a>
+                                            <a href="{{ url("/admin/posts/{$post->id}/edit") }}" class="btn btn-xs btn-info">{{ __('view.Edit') }}</a>
+                                            <a href="{{ url("/admin/posts/{$post->id}") }}" data-method="DELETE" data-token="{{ csrf_token() }}" data-confirm="{{ __('view.confirm') }}" class="btn btn-xs btn-danger">{{ __('view.Delete') }}</a>
                                         </td>
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="5">No post available.</td>
+                                        <td colspan="5">{{ __('error.PostsAvai') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>

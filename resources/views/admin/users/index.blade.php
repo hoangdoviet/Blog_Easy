@@ -8,7 +8,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>
-                            Users
+                        {{ __('view.Users') }}
                         </h2>
                     </div>
 
@@ -16,11 +16,11 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>{{ __('view.Name') }}</th>
                                     <th>Email</th>
-                                    <th>Admin?</th>
-                                    <th>No of Posts</th>
-                                    <th>Action</th>
+                                    <th>{{ __('view.Admin') }}?</th>
+                                    <th>{{ __('view.NoofPosts') }}</th>
+                                    <th>{{ __('view.Action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -31,12 +31,12 @@
                                         <td>{{ ($user->is_admin)?'Yes':'No' }}</td>
                                         <td>{{ $user->posts_count }}</td>
                                         <td>
-                                            <a href="{{ url("/admin/users/{$user->id}") }}" data-method="DELETE" data-token="{{ csrf_token() }}" data-confirm="Are you sure?" class="btn btn-xs btn-danger">Delete</a>
+                                            <a href="{{ url("/admin/users/{$user->id}") }}" data-method="DELETE" data-token="{{ csrf_token() }}" data-confirm="{{ __('view.confirm') }}" class="btn btn-xs btn-danger">{{ __('view.Delete') }}</a>
                                         </td>
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="2">No user available.</td>
+                                        <td colspan="2">{{ __('error.UsersAvai') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>

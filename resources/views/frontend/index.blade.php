@@ -11,7 +11,7 @@
                 @forelse ($posts as $post)
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            {{ $post->title }} - <small>by {{ $post->user->name }}</small>
+                            {{ $post->title }} - <small>{{ __('view.by') }} {{ $post->user->name }}</small>
 
                             <span class="pull-right">
                                 {{ $post->created_at->toDayDateTimeString() }}
@@ -25,23 +25,23 @@
                                 @forelse ($post->tags as $tag)
                                     <span class="label label-default">{{ $tag->name }}</span>
                                 @empty
-                                    <span class="label label-danger">No tag found.</span>
+                                    <span class="label label-danger">{{ __('error.NoTagFound') }}</span>
                                 @endforelse
                             </p>
                             <p>
                                 <span class="btn btn-sm btn-success">{{ $post->category->name }}</span>
-                                <span class="btn btn-sm btn-info">Comments <span class="badge">{{ $post->comments_count }}</span></span>
+                                <span class="btn btn-sm btn-info">{{ __('view.Comments') }} <span class="badge">{{ $post->comments_count }}</span></span>
 
-                                <a href="{{ url("/posts/{$post->id}") }}" class="btn btn-sm btn-primary">See more</a>
+                                <a href="{{ url("/posts/{$post->id}") }}" class="btn btn-sm btn-primary">{{ __('view.see') }}</a>
                             </p>
                         </div>
                     </div>
                 @empty
                     <div class="panel panel-default">
-                        <div class="panel-heading">Not Found!!</div>
+                        <div class="panel-heading">{{ __('error.NotFound') }}</div>
 
                         <div class="panel-body">
-                            <p>Sorry! No post found.</p>
+                            <p>{{ __('error.NoPostFound') }}</p>
                         </div>
                     </div>
                 @endforelse

@@ -11,10 +11,21 @@ return [
     | messages that we need to display to the user. You are free to modify
     | these language lines according to your application's requirements.
     |
-    */
+     */
 
-    'failed' => 'These credentials do not match our records.',
-    'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-
+    'Login' => 'Login',
+    'Logout' => 'Logout',
+    'Register' => 'Register',
+    'Remember' => 'Remember Me',
+    'Forgot' => 'Forgot your password',
+    'EAddress' => 'E-Mail Address',
+    'password' => 'Password',
+    'confirmpass' => 'Confirm Password',
+    'send' => 'Send Password Reset Link',
+    'Reset' => 'Reset Password',
+    'Verify' => 'Verify Your Email Address',
+    'A' => 'A fresh verification link has been sent to your email address.',
+    'Before' => 'Before proceeding, please check your email for a verification link.',
+    'If' => 'If you did not receive the email',
+    'click' => 'click here to request another',
 ];

@@ -8,9 +8,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>
-                            Create Tag
+                        {{ __('view.Create') }} {{ __('view.Tags') }}g
 
-                            <a href="{{ url('admin/tags') }}" class="btn btn-default pull-right">Go Back</a>
+                            <a href="{{ url('admin/tags') }}" class="btn btn-default pull-right">{{ __('view.GoBack') }}</a>
                         </h2>
                     </div>
 
@@ -22,7 +22,7 @@
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-2">
                                     <button type="submit" class="btn btn-primary">
-                                        Create
+                                    {{ __('view.Create') }}
                                     </button>
                                 </div>
                             </div>

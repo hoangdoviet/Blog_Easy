@@ -40,4 +40,10 @@ class BlogController extends Controller
 
         return redirect("/posts/{$post->id}");
     }
+    public function changeLanguage($language)
+    {
+        \Session::put('website_language', $language);
+
+        return redirect()->back();
+    }
 }

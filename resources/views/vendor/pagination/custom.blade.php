@@ -3,9 +3,9 @@
     <ul class="pager">
 
         @if ($paginator->onFirstPage())
-            <li class="disabled"><span>← Previous</span></li>
+            <li class="disabled"><span>← {{ __('view.Previous') }}</span></li>
         @else
-            <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev">← Previous</a></li>
+            <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev">← {{ __('view.Previous') }}</a></li>
         @endif
 
 
@@ -32,9 +32,9 @@
 
 
         @if ($paginator->hasMorePages())
-            <li><a href="{{ $paginator->nextPageUrl() }}" rel="next">Next →</a></li>
+            <li><a href="{{ $paginator->nextPageUrl() }}" rel="next">{{ __('view.Next') }} →</a></li>
         @else
-            <li class="disabled"><span>Next →</span></li>
+            <li class="disabled"><span>{{ __('view.Next') }} →</span></li>
         @endif
     </ul>
 @endif

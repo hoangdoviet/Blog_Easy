@@ -8,9 +8,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>
-                            Tags
+                        {{ __('view.Tags') }}
 
-                            <a href="{{ url('admin/tags/create') }}" class="btn btn-default pull-right">Create New</a>
+                            <a href="{{ url('admin/tags/create') }}" class="btn btn-default pull-right">{{ __('view.Create') }}</a>
                         </h2>
                     </div>
 
@@ -18,8 +18,8 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Action</th>
+                                    <th>{{ __('view.Name') }}</th>
+                                    <th>{{ __('view.Action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -27,13 +27,13 @@
                                     <tr>
                                         <td>{{ $tag->name }}</td>
                                         <td>
-                                            <a href="{{ url("/admin/tags/{$tag->id}/edit") }}" class="btn btn-xs btn-info">Edit</a>
-                                            <a href="{{ url("/admin/tags/{$tag->id}") }}" data-method="DELETE" data-token="{{ csrf_token() }}" data-confirm="Are you sure?" class="btn btn-xs btn-danger">Delete</a>
+                                            <a href="{{ url("/admin/tags/{$tag->id}/edit") }}" class="btn btn-xs btn-info">{{ __('view.Edit') }}</a>
+                                            <a href="{{ url("/admin/tags/{$tag->id}") }}" data-method="DELETE" data-token="{{ csrf_token() }}" data-confirm="{{ __('view.confirm') }}" class="btn btn-xs btn-danger">{{ __('view.Delete') }}</a>
                                         </td>
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="2">No tag available.</td>
+                                        <td colspan="2">{{ __('error.TagsAvai') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>
