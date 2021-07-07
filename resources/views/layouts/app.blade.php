@@ -13,7 +13,9 @@
     <!-- Styles -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/select2.css')}}" rel="stylesheet">
+    <script src="https://unpkg.com/vue-multiselect@2.1.0"></script>
 
+    <link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css">
 
 </head>
 <body>

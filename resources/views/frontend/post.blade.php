@@ -27,8 +27,10 @@
                         </p>
                     </div>
                 </div>
+                @if (Auth::user())
+                    <post-comment :post="{{ json_encode($post) }}"> </post-comment>
+                @endif
 
-                @includeWhen(Auth::user(), 'frontend._form')
 
                 @include('frontend._comment')
 

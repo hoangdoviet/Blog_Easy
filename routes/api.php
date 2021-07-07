@@ -13,10 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
-    Route::get('/tags', 'ListController@tags');
-    Route::get('/categories', 'ListController@categories');
-    Route::get('/users', 'ListController@users')->middleware('admin');
+Route::group(['namespace' => 'Api'], function () {
+    Route::get('/get_tags', 'ListController@tags');
+    Route::get('/get_categories', 'ListController@categories');
+    Route::get('/get_users', 'ListController@users')->middleware('admin');
+    Route::get('/get_posts', 'ListController@posts');
+    Route::get('/get_comments', 'ListController@comments');
 
-    Route::resource('/posts', 'PostController', ['only' => ['index', 'show']]);
 });

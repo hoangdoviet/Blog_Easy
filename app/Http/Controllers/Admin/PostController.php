@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
-use App\Models\Category;
 use App\Models\Post;
-use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -18,8 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with(['user', 'category', 'tags', 'comments'])->paginate(10);
-
+        $posts = Post::with(['user', 'category', 'tags', 'comments'])->paginate(2);
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -30,10 +27,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        $categories = Category::pluck('name', 'id')->all();
-        $tags = Tag::pluck('name', 'name')->all();
 
-        return view('admin.posts.create', compact('categories', 'tags'));
+        return view('admin.posts.create');
     }
 
     /**
@@ -44,20 +39,19 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
+
         $post = Post::create([
             'title' => $request->title,
             'body' => $request->body,
             'category_id' => $request->category_id,
         ]);
-
-        $tagsId = collect($request->tags)->map(function ($tag) {
-            return Tag::firstOrCreate(['name' => $tag])->id;
-        });
-
-        $post->tags()->attach($tagsId);
+        $tags = [];
+        foreach ($request->tags as $key) {
+            array_push($tags, $key['id']);
+        }
+        $post->tags()->attach($tags);
         flash()->overlay('Post created successfully.');
-
-        return redirect('/admin/posts');
+        // return redirect('/admin/posts');
     }
 
     /**
@@ -81,10 +75,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        $categories = Category::pluck('name', 'id')->all();
-        $tags = Tag::pluck('name', 'name')->all();
-
-        return view('admin.posts.edit', compact('post', 'categories', 'tags'));
+        $post->tags->pluck('name')->all();
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -101,15 +93,15 @@ class PostController extends Controller
             'body' => $request->body,
             'category_id' => $request->category_id,
         ]);
+        $tags = [];
+        foreach ($request->tags as $key) {
+            array_push($tags, $key['id']);
+        }
 
-        $tagsId = collect($request->tags)->map(function ($tag) {
-            return Tag::firstOrCreate(['name' => $tag])->id;
-        });
-
-        $post->tags()->sync($tagsId);
+        $post->tags()->sync($tags);
         flash()->overlay('Post updated successfully.');
 
-        return redirect('/admin/posts');
+        // return redirect('/admin/posts');
     }
 
     /**
@@ -120,16 +112,15 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        if ($post->user_id != auth()->user()->id && auth()->user()->is_admin == false) {
-            flash()->overlay("You can't delete other peoples post.");
+        // if ($post->user_id != auth()->user()->id && auth()->user()->is_admin == false) {
+        //     flash()->overlay("You can't delete other peoples post.");
 
-            return redirect('/admin/posts');
-        }
+        //     return redirect('/admin/posts');
+        // }
 
         $post->delete();
         flash()->overlay('Post deleted successfully.');
-
-        return redirect('/admin/posts');
+        //  return redirect('/admin/posts');
     }
 
     public function publish(Post $post)
@@ -138,6 +129,6 @@ class PostController extends Controller
         $post->save();
         flash()->overlay('Post changed successfully.');
 
-        return redirect('/admin/posts');
+        //return redirect('/admin/posts');
     }
 }

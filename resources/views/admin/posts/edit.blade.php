@@ -14,20 +14,8 @@
                         </h2>
                     </div>
 
-                    <div class="panel-body">
-                        {!! Form::model($post, ['method' => 'PUT', 'url' => "/admin/posts/{$post->id}", 'class' => 'form-horizontal', 'role' => 'form']) !!}
-
-                            @include('admin.posts.form')
-
-                            <div class="form-group">
-                                <div class="col-md-8 col-md-offset-2">
-                                    <button type="submit" class="btn btn-primary">
-                                    {{ __('view.Update') }}
-                                    </button>
-                                </div>
-                            </div>
-
-                        {!! Form::close() !!}
+                    <div id="app" class="panel-body">
+                        <post-edit :post="{{ json_encode($post) }}"></post-edit>
                     </div>
                 </div>
             </div>

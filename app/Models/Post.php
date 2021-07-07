@@ -30,7 +30,7 @@ class Post extends Model
         });
 
         static::deleting(function ($post) {
-            $post->comment()->delete();
+            // $post->comment()->delete();
             $post->comments()->delete();
             $post->tags()->detach();
         });

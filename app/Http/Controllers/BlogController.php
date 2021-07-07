@@ -31,14 +31,14 @@ class BlogController extends Controller
 
     public function comment(Request $request, Post $post)
     {
-        $this->validate($request, ['body' => 'required']);
 
+        $this->validate($request, ['body' => 'required']);
         $post->comments()->create([
             'body' => $request->body,
         ]);
         flash()->overlay('Comment successfully created');
 
-        return redirect("/posts/{$post->id}");
+        // return redirect("/posts/{$post->id}");
     }
     public function changeLanguage($language)
     {

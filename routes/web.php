@@ -31,4 +31,5 @@ Route::group(['middleware' => 'locale'], function () {
         Route::resource('/comments', 'CommentController', ['only' => ['index', 'destroy']]);
         Route::resource('/users', 'UserController', ['middleware' => 'admin', 'only' => ['index', 'destroy']]);
     });
+    Route::get('lang-{lang}.js', 'LanguageController@show');
 });
